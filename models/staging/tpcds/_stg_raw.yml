@@ -1,0 +1,487 @@
+models:
+  - name: stg_raw__catalog_returns
+    columns:
+    - name: REFUNDED_CASH
+      description: "Dinero devuelto. Si el valor es NULL se guarda como 0."
+    - name: RETURN_AMT_INC_TAX
+      description: "Importe devuelto incluyendo impuestos. Si el valor es NULL se guarda como 0."
+    - name: RETURN_TAX
+      description: "Impuestos asociados a la devolución. Si el valor es NULL se guarda como 0."
+    - name: REASON_SK
+    - name: RETURNING_CUSTOMER_SK
+    - name: RETURNING_ADDR_SK
+    - name: REFUNDED_ADDR_SK
+    - name: ITEM_SK
+    - name: REFUNDED_HDEMO_SK
+    - name: RETURNING_HDEMO_SK
+    - name: RETURN_QUANTITY
+      description: "Cantidad devuelta. Si el valor es NULL se guarda como 0."
+    - name: RETURN_AMOUNT
+      description: "Importe devuelto. Si el valor es NULL se guarda como 0."
+    - name: CALL_CENTER_SK
+    - name: ORDER_NUMBER
+    - name: FEE
+      description: "Comisiones asociadas a la devolución. Si el valor es NULL se guarda como 0."
+    - name: RETURNING_CDEMO_SK
+    - name: REFUNDED_CDEMO_SK
+    - name: RETURNED_TIME_SK
+    - name: REVERSED_CHARGE
+      description: "Importe de cargos revertidos. Si el valor es NULL se guarda como 0."
+    - name: RETURNED_DATE_SK
+    - name: NET_LOSS
+      description: "Pérdida neta asociada a la devolución. Si el valor es NULL se guarda como 0."
+    - name: SHIP_MODE_SK
+    - name: REFUNDED_CUSTOMER_SK
+    - name: WAREHOUSE_SK
+    - name: CATALOG_PAGE_SK
+    - name: STORE_CREDIT
+      description: "Crédito en tienda generado por la devolución. Si el valor es NULL se guarda como 0."
+    - name: RETURN_SHIP_COST
+      description: "Coste de envío de la devolución. Si el valor es NULL se guarda como 0."
+
+  - name: stg_raw__catalog_sales
+    columns:
+    - name: NET_PROFIT
+      description: "Beneficio neto de la transacción. Si el valor es NULL se guarda como 0."
+    - name: NET_PAID_INC_TAX
+      description: "Importe neto con impuestos. Si el valor es NULL se guarda como 0."
+    - name: NET_PAID_INC_SHIP
+      description: "Importe neto con envío incluido. Si el valor es NULL se guarda como 0."
+    - name: EXT_DISCOUNT_AMT
+      description: "Importe de descuento aplicado. Si el valor es NULL se guarda como 0."
+    - name: BILL_CDEMO_SK
+    - name: CATALOG_PAGE_SK
+    - name: CALL_CENTER_SK
+    - name: WAREHOUSE_SK
+    - name: WHOLESALE_COST
+      description: "Coste mayorista. Si el valor es NULL se guarda como 0."
+    - name: QUANTITY
+      description: "Cantidad vendida. Si el valor es NULL se guarda como 0."
+    - name: SHIP_CUSTOMER_SK
+    - name: SHIP_DATE_SK
+    - name: SALES_PRICE
+      description: "Precio de venta. Si el valor es NULL se guarda como 0."
+    - name: EXT_LIST_PRICE
+      description: "Precio total de lista. Valores NULL sustituidos por 0."
+    - name: ITEM_SK
+    - name: SHIP_ADDR_SK
+    - name: BILL_CUSTOMER_SK
+    - name: LIST_PRICE
+      description: "Precio de lista. Si el valor es NULL se guarda como 0."
+    - name: ORDER_NUMBER
+    - name: BILL_HDEMO_SK
+    - name: PROMO_SK
+    - name: EXT_WHOLESALE_COST
+      description: "Coste mayorista extendido. Si el valor es NULL se guarda como 0."
+    - name: COUPON_AMT
+      description: "Importe de cupones aplicados. Si el valor es NULL se guarda como 0."
+    - name: SOLD_TIME_SK
+    - name: SHIP_CDEMO_SK
+    - name: SOLD_DATE_SK
+    - name: NET_PAID_INC_SHIP_TAX
+      description: "Importe neto con envío e impuestos incluidos. Si el valor es NULL se guarda como 0."
+    - name: NET_PAID
+      description: "Importe neto pagado. Si el valor es NULL se guarda como 0."
+    - name: SHIP_MODE_SK
+    - name: SHIP_HDEMO_SK
+    - name: EXT_SHIP_COST
+      description: "Coste de envío extendido. Si el valor es NULL se guarda como 0."
+    - name: EXT_TAX
+      description: "Impuestos extendidos. Si el valor es NULL se guarda como 0."
+    - name: EXT_SALES_PRICE
+      description: "Precio de venta extendido. Si el valor es NULL se guarda como 0."
+    - name: BILL_ADDR_SK
+
+  - name: stg_raw__customer_address
+    columns:
+    - name: STREET_NAME
+      description: "Nombre de la calle. Si el valor es NULL se guarda como 'unknown'."
+    - name: GMT_OFFSET
+    - name: COUNTY
+      description: "Condado o región del cliente. Si el valor es NULL se guarda como 'unknown'."
+    - name: ZIP
+      description: "Código postal. Si el valor es NULL se guarda como 'unknown'."
+    - name: ADDRESS_ID
+    - name: CITY
+      description: "Ciudad del cliente. Si el valor es NULL se guarda como 'unknown'."
+    - name: COUNTRY
+      description: "País del cliente. Si el valor es NULL se guarda como 'unknown'."
+    - name: ADDRESS_SK
+    - name: STREET_NUMBER
+      description: "Número de la calle. Si el valor es NULL se guarda como 'unknown'."
+    - name: STREET_TYPE
+      description: "Tipo de vía. Si el valor es NULL se guarda como 'unknown'."
+    - name: STATE
+      description: "Estado o región del cliente. Si el valor es NULL se guarda como 'unknown'."
+    - name: SUITE_NUMBER
+      description: "Número de apartamento o suite. Si el valor es NULL se guarda como 'unknown'."
+    - name: LOCATION_TYPE
+
+  - name: stg_raw__customer_demogra
+    columns:
+    - name: DEP_COLLEGE_COUNT
+      description: "Dependientes en edad universitaria. Si el valor es NULL se guarda como 0."
+    - name: GENDER
+      description: "Género del cliente. Si el valor es NULL se guarda como 'unknown'."
+    - name: PURCHASE_ESTIMATE
+      description: "Estimación de compra. Si el valor es NULL se guarda como 0."
+    - name: DEP_EMPLOYED_COUNT
+      description: "Dependientes empleados. Si el valor es NULL se guarda como 0."
+    - name: MARITAL_STATUS
+      description: "Estado civil del cliente. Si el valor es NULL se guarda como 'unknown'."
+    - name: EDUCATION_STATUS
+      description: "Nivel educativo del cliente. Si el valor es NULL se guarda como 'unknown'."
+    - name: CREDIT_RATING
+      description: "Rating del credito. Si el valor es NULL se guarda como 'unknown'."
+    - name: DEP_COUNT
+      description: "Número de dependientes. Si el valor es NULL se guarda como 0."
+    - name: DEMO_SK
+
+  - name: stg_raw__customer
+    columns:  
+      - name: EMAIL_ADDRESS
+        description: "Email del cliente. Si el valor es NULL se guarda como 'not_provided'."
+      - name: CUSTOMER_SK
+      - name: LAST_NAME
+        description: "Apellido del cliente. Si el valor es NULL se guarda como 'unknown'."
+      - name: BIRTH_MONTH
+      - name: LOGIN
+        description: "El login del cliente. Si el valor es NULL se guarda como 'unknown'."
+      - name: CURRENT_ADDR_SK
+      - name: CUSTOMER_ID
+      - name: CURRENT_HDEMO_SK
+      - name: LAST_REVIEW_DATE
+      - name: BIRTH_COUNTRY
+        description: "El pais de nacimiento del cliente. Si el valor es NULL se guarda como 'unknown'."
+      - name: CURRENT_CDEMO_SK
+      - name: SALUTATION
+        description: "La forma de referirse al cliente. Si el valor es NULL se guarda como 'unknown'."
+      - name: FIRST_SALES_DATE_SK
+      - name: BIRTH_YEAR
+      - name: BIRTH_DAY
+      - name: PREFERRED_CUST_FLAG
+        description: "Indicador de cliente preferente. Si el valor es NULL se guarda como 'N'."
+      - name: FIRST_SHIPTO_DATE_SK
+      - name: FIRST_NAME
+        description: "El nombre del cliente. Si el valor es NULL se guarda como 'unknown'."
+
+  - name: stg_raw__date_dim
+    columns:
+    - name: QUARTER_SEQ
+    - name: CURRENT_DAY
+    - name: DATE
+    - name: CURRENT_MONTH
+    - name: QUARTER_NAME
+    - name: WEEK_SEQ
+    - name: YEAR
+    - name: SAME_DAY_LQ
+    - name: FY_WEEK_SEQ
+    - name: DAY_NAME
+    - name: DATE_ID
+    - name: FY_YEAR
+    - name: QOY
+    - name: FIRST_DOM
+    - name: CURRENT_WEEK
+    - name: SAME_DAY_LY
+    - name: DATE_SK
+    - name: FY_QUARTER_SEQ
+    - name: WEEKEND
+    - name: MONTH_SEQ
+    - name: DOW
+    - name: CURRENT_YEAR
+    - name: LAST_DOM
+    - name: MOY
+    - name: HOLIDAY
+    - name: FOLLOWING_HOLIDAY
+    - name: CURRENT_QUARTER
+    - name: DOM
+  
+  - name: stg_raw__household_demogra
+    columns:
+    - name: INCOME_BAND_SK
+    - name: VEHICLE_COUNT
+      description: "Número de vehículos en el hogar. Si el valor es NULL se guarda como 0."
+    - name: DEMO_SK
+    - name: DEP_COUNT
+      description: "Número de dependientes en el hogar. Si el valor es NULL se guarda como 0."
+    - name: BUY_POTENTIAL
+      description: "Potencial de compra del hogar. Si el valor es NULL se guarda como 'unknown'."
+
+  - name: stg_raw__item
+    columns:
+    - name: REC_END_DATE
+    - name: WHOLESALE_COST
+      description: "Coste mayorista del producto. Si el valor es NULL se guarda como 0."
+    - name: CLASS
+      description: "Clase del producto. Si el valor es NULL se guarda como 'unknown'."
+    - name: MANAGER_ID
+    - name: ITEM_DESC
+      description: "Descripción del producto. Si el valor es NULL se guarda como 'unknown'."
+    - name: CLASS_ID
+    - name: MANUFACT_ID
+    - name: BRAND
+      description: "Marca del producto. Si el valor es NULL se guarda como 'unknown'."
+    - name: CATEGORY_ID
+    - name: UNITS
+      description: "Unidad de medida del producto. Si el valor es NULL se guarda como 'unknown'."
+    - name: FORMULATION
+      description: "Tipo de formulación del producto. Si el valor es NULL se guarda como 'unknown'."
+    - name: BRAND_ID
+    - name: PRODUCT_NAME
+      description: "Nombre del producto. Si el valor es NULL se guarda como 'unknown'."
+    - name: ITEM_ID
+    - name: COLOR
+      description: "Color del producto. Si el valor es NULL se guarda como 'unknown'."
+    - name: CURRENT_PRICE
+      description: "Precio actual del producto. Si el valor es NULL se guarda como 0."
+    - name: ITEM_SK
+    - name: CATEGORY
+      description: "Categoría del producto. Si el valor es NULL se guarda como 'unknown'."
+    - name: REC_START_DATE
+    - name: MANUFACT
+      description: "Nombre del fabricante. Si el valor es NULL se guarda como 'unknown'."
+    - name: CONTAINER
+      description: "Tipo de envase. Si el valor es NULL se guarda como 'unknown'."
+    - name: SIZE
+      description: "Tamaño del producto. Si el valor es NULL se guarda como 'unknown'."
+    
+  - name: stg_raw__store_returns
+    columns:
+    - name: RETURN_TAX
+      description: "Impuestos asociados a la devolución. Si el valor es NULL se guarda como 0."
+    - name: FEE
+      description: "Comisiones asociadas a la devolución. Si el valor es NULL se guarda como 0."
+    - name: RETURN_AMT_INC_TAX
+      description: "Importe devuelto incluyendo impuestos. Si el valor es NULL se guarda como 0."
+    - name: RETURN_SHIP_COST
+      description: "Coste de envío de la devolución. Si el valor es NULL se guarda como 0."
+    - name: ITEM_SK
+    - name: RETURN_TIME_SK
+    - name: RETURN_AMT
+      description: "Importe devuelto. Si el valor es NULL se guarda como 0."
+    - name: ADDR_SK
+    - name: HDEMO_SK
+    - name: STORE_CREDIT
+      description: "Crédito en tienda generado por la devolución. Si el valor es NULL se guarda como 0."
+    - name: REFUNDED_CASH
+      description: "Cantidad reembolsada en efectivo. Si el valor es NULL se guarda como 0."
+    - name: RETURN_QUANTITY
+      description: "Cantidad devuelta. Si el valor es NULL se guarda como 0."
+    - name: REASON_SK
+    - name: TICKET_NUMBER
+    - name: REVERSED_CHARGE
+      description: "Importe de cargos revertidos. Si el valor es NULL se guarda como 0."
+    - name: CUSTOMER_SK
+    - name: RETURNED_DATE_SK
+    - name: NET_LOSS
+      description: "Pérdida neta asociada a la devolución. Si el valor es NULL se guarda como 0."
+    - name: STORE_SK
+    - name: CDEMO_SK
+
+  - name: stg_raw__store_sales
+    columns:
+    - name: PROMO_SK
+    - name: TICKET_NUMBER
+    - name: STORE_SK
+    - name: NET_PAID
+      description: "Importe neto pagado. Valores NULL sustituidos por 0."
+    - name: ITEM_SK
+    - name: QUANTITY
+      description: "Cantidad vendida. Valores NULL sustituidos por 0."
+    - name: ADDR_SK
+    - name: LIST_PRICE
+      description: "Precio de lista del producto. Valores NULL sustituidos por 0."
+    - name: SOLD_TIME_SK
+    - name: NET_PAID_INC_TAX
+      description: "Importe neto pagado incluyendo impuestos. Valores NULL sustituidos por 0."
+    - name: NET_PROFIT
+      description: "Beneficio neto de la venta. Valores NULL sustituidos por 0."
+    - name: EXT_LIST_PRICE
+      description: "Precio total de lista. Valores NULL sustituidos por 0."
+    - name: HDEMO_SK
+    - name: EXT_TAX
+      description: "Impuestos asociados a la venta. Valores NULL sustituidos por 0."
+    - name: COUPON_AMT
+      description: "Importe de cupones aplicados. Valores NULL sustituidos por 0."
+    - name: EXT_WHOLESALE_COST
+      description: "Coste total mayorista. Valores NULL sustituidos por 0."
+    - name: EXT_DISCOUNT_AMT
+      description: "Descuento aplicado. Valores NULL sustituidos por 0."
+    - name: CUSTOMER_SK
+    - name: WHOLESALE_COST
+      description: "Coste mayorista del producto. Valores NULL sustituidos por 0."
+    - name: SALES_PRICE
+      description: "Precio de venta del producto. Valores NULL sustituidos por 0."
+    - name: EXT_SALES_PRICE
+      description: "Importe total de venta. Valores NULL sustituidos por 0."
+    - name: CDEMO_SK
+    - name: SOLD_DATE_SK
+
+  - name: stg_raw__store
+    columns:
+    - name: COMPANY_NAME
+      description: "Nombre de la empresa. Si el valor es NULL se guarda como 'unknown'."
+    - name: CLOSED_DATE_SK
+    - name: REC_START_DATE
+    - name: MARKET_MANAGER
+      description: "Responsable del mercado. Si el valor es NULL se guarda como 'unknown'."
+    - name: COUNTY
+      description: "Condado o región. Si el valor es NULL se guarda como 'unknown'."
+    - name: STREET_NUMBER
+      description: "Número de la calle. Si el valor es NULL se guarda como 'unknown'."
+    - name: CITY
+      description: "Ciudad. Si el valor es NULL se guarda como 'unknown'."
+    - name: STREET_NAME
+      description: "Nombre de la calle. Si el valor es NULL se guarda como 'unknown'."
+    - name: REC_END_DATE
+    - name: HOURS
+      description: "Horario de apertura. Si el valor es NULL se guarda como 'unknown'."
+    - name: STATE
+      description: "Estado o región. Si el valor es NULL se guarda como 'unknown'."
+    - name: STORE_ID
+    - name: MANAGER
+      description: "Responsable de la tienda. Si el valor es NULL se guarda como 'unknown'."
+    - name: FLOOR_SPACE
+      description: "Superficie de la tienda. Si el valor es NULL se guarda como 0."
+    - name: GEOGRAPHY_CLASS
+      description: "Clasificación geográfica. Si el valor es NULL se guarda como 'unknown'."
+    - name: DIVISION_NAME
+      description: "Nombre de la division. Si el valor es NULL se guarda como 'unknown'."
+    - name: GMT_OFFSET
+    - name: STORE_NAME
+      description: "Nombre de la tienda. Si el valor es NULL se guarda como 'unknown'."
+    - name: STREET_TYPE
+      description: "Tipo de vía. Si el valor es NULL se guarda como 'unknown'."
+    - name: COMPANY_ID
+    - name: MARKET_ID
+    - name: TAX_PRECENTAGE
+      description: "Porcentaje de impuestos aplicados. Si el valor es NULL se guarda como 0."
+    - name: STORE_SK
+    - name: MARKET_DESC
+      description: "Descripción del mercado. Si el valor es NULL se guarda como 'unknown'."
+    - name: NUMBER_EMPLOYEES
+      description: "Número de empleados. Si el valor es NULL se guarda como 0."
+    - name: COUNTRY
+      description: "País. Si el valor es NULL se guarda como 'unknown'."
+    - name: DIVISION_ID
+    - name: ZIP
+      description: "Codigo postal. Si el valor es NULL se guarda como 'unknown'."
+    - name: SUITE_NUMBER
+      description: "Número de la suite. Si el valor es NULL se guarda como 'unknown'."
+
+  - name: stg_raw__warehouse
+    columns:
+    - name: STREET_NUMBER
+      description: "Número de la calle. Si el valor es NULL se guarda como 'unknown'."
+    - name: STREET_NAME
+      description: "Nombre de la calle. Si el valor es NULL se guarda como 'unknown'."
+    - name: WAREHOUSE_SQ_FT
+    - name: CITY
+      description: "Ciudad. Si el valor es NULL se guarda como 'unknown'."
+    - name: SUITE_NUMBER
+      description: "Número de la suite. Si el valor es NULL se guarda como 'unknown'."
+    - name: GMT_OFFSET
+    - name: WAREHOUSE_ID
+    - name: COUNTY
+      description: "Condado o región. Si el valor es NULL se guarda como 'unknown'."
+    - name: STREET_TYPE
+      description: "Tipo de vía. Si el valor es NULL se guarda como 'unknown'."
+    - name: STATE
+      description: "Estado o región. Si el valor es NULL se guarda como 'unknown'."
+    - name: WAREHOUSE_NAME
+      description: "Nombre del almacén. Si el valor es NULL se guarda como 'unknown'."
+    - name: WAREHOUSE_SK
+    - name: COUNTRY
+      description: "País. Si el valor es NULL se guarda como 'unknown'."
+    - name: ZIP
+      description: "Código postal. Si el valor es NULL se guarda como 'unknown'."
+
+  - name: stg_raw__web_returns
+    columns:
+    - name: REFUNDED_ADDR_SK
+    - name: REFUNDED_CDEMO_SK
+    - name: RETURN_AMT_INC_TAX
+      description: "Importe devuelto incluyendo impuestos. Si el valor es NULL se guarda como 0."
+    - name: WEB_PAGE_SK
+    - name: ITEM_SK
+    - name: REFUNDED_CUSTOMER_SK
+    - name: RETURNING_ADDR_SK
+    - name: RETURNING_HDEMO_SK
+    - name: REFUNDED_HDEMO_SK
+    - name: NET_LOSS
+      description: "Pérdida neta asociada a la devolución. Si el valor es NULL se guarda como 0."
+    - name: ACCOUNT_CREDIT
+      description: "Importe acreditado en la cuenta del cliente debido a la devolucion. Si el valor es NULL se guarda como 0."
+    - name: RETURNING_CDEMO_SK
+    - name: RETURN_QUANTITY
+      description: "Cantidad devuelta. Si el valor es NULL se guarda como 0."
+    - name: RETURNING_CUSTOMER_SK
+    - name: RETURN_SHIP_COST
+      description: "Coste de envío de la devolución. Si el valor es NULL se guarda como 0."
+    - name: RETURN_AMT
+      description: "Importe devuelto. Si el valor es NULL se guarda como 0."
+    - name: ORDER_NUMBER
+    - name: FEE
+      description: "Comisiones asociadas a la devolución. Si el valor es NULL se guarda como 0."
+    - name: RETURN_TAX
+      description: "Impuestos asociados a la devolución. Si el valor es NULL se guarda como 0."
+    - name: RETURNED_DATE_SK
+    - name: REFUNDED_CASH
+      description: "Dinero devuelto. Si el valor es NULL se guarda como 0."
+    - name: REASON_SK
+    - name: REVERSED_CHARGE
+      description: "Importe de cargos revertidos. Si el valor es NULL se guarda como 0."
+    - name: RETURNED_TIME_SK
+
+  - name: stg_raw__web_sales
+    columns:
+    - name: SHIP_ADDR_SK
+    - name: BILL_ADDR_SK
+    - name: EXT_DISCOUNT_AMT
+      description: "Descuento aplicado. Valores NULL sustituidos por 0."
+    - name: WHOLESALE_COST
+      description: "Coste mayorista. Si el valor es NULL se guarda como 0."
+    - name: EXT_SHIP_COST
+      description: "Coste de envío extendido. Si el valor es NULL se guarda como 0."
+    - name: NET_PAID_INC_SHIP_TAX
+      description: "Importe neto con envío e impuestos incluidos. Si el valor es NULL se guarda como 0."
+    - name: EXT_WHOLESALE_COST
+      description: "Coste mayorista extendido. Si el valor es NULL se guarda como 0."
+    - name: BILL_HDEMO_SK
+    - name: SHIP_MODE_SK
+    - name: NET_PAID
+      description: "Importe neto pagado. Si el valor es NULL se guarda como 0."
+    - name: COUPON_AMT
+      description: "Importe de cupones aplicados. Si el valor es NULL se guarda como 0."
+    - name: SOLD_TIME_SK
+    - name: WAREHOUSE_SK
+    - name: NET_PAID_INC_TAX
+      description: "Importe neto con impuestos. Si el valor es NULL se guarda como 0."
+    - name: NET_PAID_INC_SHIP
+      description: "Importe neto con envío incluido. Si el valor es NULL se guarda como 0."
+    - name: SHIP_CUSTOMER_SK
+    - name: SHIP_CDEMO_SK
+    - name: SHIP_HDEMO_SK
+    - name: SHIP_DATE_SK
+    - name: SOLD_DATE_SK
+    - name: EXT_LIST_PRICE
+      description: "Precio total de lista. Valores NULL sustituidos por 0."
+    - name: WEB_SITE_SK
+    - name: ITEM_SK
+    - name: LIST_PRICE
+      description: "Precio de lista del producto. Valores NULL sustituidos por 0."
+    - name: BILL_CDEMO_SK
+    - name: NET_PROFIT
+      description: "Beneficio neto de la transacción. Si el valor es NULL se guarda como 0."
+    - name: WEB_PAGE_SK
+    - name: BILL_CUSTOMER_SK
+    - name: ORDER_NUMBER
+    - name: QUANTITY
+      description: "Cantidad vendida. Si el valor es NULL se guarda como 0."
+    - name: EXT_SALES_PRICE
+      description: "Precio de venta extendido. Si el valor es NULL se guarda como 0."
+    - name: EXT_TAX
+      description: "Impuestos extendidos. Si el valor es NULL se guarda como 0."
+    - name: SALES_PRICE
+      description: "Precio de venta. Si el valor es NULL se guarda como 0."
+    - name: PROMO_SK
