@@ -1,0 +1,13 @@
+models:
+  - name: int_unified_sales
+    description: Modelo que une todas las tablas de ventas, las de STORE_SALES, CATALOG_SALES y WEB_SALES.
+  - name: int_unified_returns
+    description: Modelo que une todas las tablas de devoluciones, las de STORE_RETURNS, CATALOG_RETURNS y WEB_RETURNS.
+  
+  - name: int_customer_enriched
+    description: Modelo que combina la tabla CUSTOMER CONCUSTOMER_ADDRESS, CUSTOMER_DEMOGRAPHICS 
+      y HOUSEHOLD_DEMOGRAPHICS.
+
+      Se resuelve el problema de las junk dimensions de demografía mediante desnormalización, 
+      ntegrando atributos de baja cardinalidad en una única tabla.
+      Esta decisión reduce la complejidad en la capa de marts y evita joins repetidos.
