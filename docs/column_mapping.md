@@ -1,4 +1,4 @@
-# Column Mapping
+# Column Mapping - int_unified_sales
 
 Este documento describe las decisiones de unificación de columnas realizadas para construir el modelo `int_unified_sales`, que integra las ventas de los canales:
 
@@ -85,8 +85,8 @@ Las métricas se estandarizan entre las tres fuentes:
 | quantity | Directo |
 | net_paid | Directo |
 | net_profit | Directo |
-| discount_amount | Normalizado según origen |
-| tax | Normalizado según origen |
+| discount_amount | Normalizado |
+| tax | Normalizado |
 
 **Decisión:**
 Se armonizan nombres y significado para permitir comparabilidad entre canales.
@@ -118,13 +118,3 @@ Se utiliza `UNION ALL` en lugar de `UNION`:
 - Evita deduplicación innecesaria
 - Mejora rendimiento
 - Las fuentes ya son disjuntas por canal
-
----
-
-## Conclusión
-
-Este modelo permite:
-
-- Análisis unificado de ventas
-- Comparación entre canales
-- Base sólida para modelos analíticos (marts)

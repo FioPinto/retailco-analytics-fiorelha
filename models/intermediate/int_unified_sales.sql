@@ -1,3 +1,7 @@
+{{ config(materialized='table') }}
+
+---------------------------------
+
 WITH catalog_sales as (
     SELECT
         'catalog' as sales_channel,
@@ -13,7 +17,7 @@ WITH catalog_sales as (
         net_paid,
         net_profit,
         ext_discount_amt as discount_amount,
-        ext_tax as tax
+        EXT_TAX AS tax
     FROM {{ ref('stg_raw__catalog_sales') }}
 ),
 
@@ -31,8 +35,8 @@ store_sales as (
         quantity,
         net_paid,
         net_profit,
-        discount_amount,
-        tax
+        ext_discount_amt as discount_amount,
+        EXT_TAX AS tax
     FROM {{ ref('stg_raw__store_sales') }}
 ),
 
@@ -50,8 +54,8 @@ web_sales as (
         quantity,
         net_paid,
         net_profit,
-        discount_amount,
-        tax
+        ext_discount_amt as discount_amount,
+        EXT_TAX AS tax
     from {{ ref('stg_raw__web_sales') }}
 )
 
