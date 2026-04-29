@@ -8,6 +8,16 @@ models:
     - name: LIFETIME_REVENUE
     - name: TOTAL_RETURNS
     - name: CLV
+      tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: 0
+          - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+              arguments:
+                column_A: lifetime_revenue
+                column_B: total_returns
+              config:
+                severity: warn
     - name: STORE_TX
     - name: WEB_TX
     - name: CATALOG_TX
@@ -32,7 +42,12 @@ models:
     - name: AVG_STOCK
     - name: WEEKLY_SALES
     - name: WEEKS_OF_STOCK
+
     - name: STOCKOUT_FLAG
+      tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              arguments:
+                value_set: [0, 1]
     - name: TREND
       tests:
         - accepted_values:

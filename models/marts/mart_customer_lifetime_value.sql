@@ -34,7 +34,10 @@ final as (
         s.total_transactions,
         s.lifetime_revenue,
         COALESCE(r.total_returns, 0) as total_returns,
-        s.lifetime_revenue - COALESCE(r.total_returns, 0) as clv,
+        CASE
+            WHEN lifetime_revenue = 0 THEN 0
+            ELSE GREATEST(0, lifetime_revenue - total_returns)
+        END AS clv,
         s.store_tx,
         s.web_tx,
         s.catalog_tx,
