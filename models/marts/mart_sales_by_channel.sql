@@ -47,4 +47,4 @@ final as (
     group by 1,2,3,4,5,6,7
 )
 
-select * from final;
+select * from final
