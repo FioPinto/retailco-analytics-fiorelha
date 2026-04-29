@@ -1,13 +1,22 @@
 models:
   - name: mart_customer_lifetime_value
+    description: Modelo a nivel cliente que consolida métricas de ventas y devoluciones para calcular valor de 
+      vida del cliente (CLV), comportamiento por canal, tasa de devoluciones y segmentación por valor basada en 
+      percentiles.
     columns:
     - name: CUSTOMER_SK
+      description: Identificador único del cliente.
       tests:
           - unique
     - name: TOTAL_TRANSACTIONS
+      description: Número total de transacciones realizadas por el cliente.
     - name: LIFETIME_REVENUE
+      description: Ingresos totales generados por el cliente a lo largo del tiempo (antes de devoluciones).
     - name: TOTAL_RETURNS
+      description: Importe total de devoluciones realizadas por el cliente.
     - name: CLV
+      description: Valor de vida del cliente, calculado como ingresos totales menos devoluciones, 
+        con un mínimo de 0.
       tests:
           - dbt_expectations.expect_column_values_to_be_between:
               arguments:
@@ -19,10 +28,15 @@ models:
               config:
                 severity: warn
     - name: STORE_TX
+      description: Número de transacciones realizadas en canal tienda física.
     - name: WEB_TX
+      description: Número de transacciones realizadas en canal web.
     - name: CATALOG_TX
+      description: Número de transacciones realizadas en canal catálogo.
     - name: RETURN_RATE
+      description: Proporción de devoluciones sobre los ingresos totales del cliente, limitada a un máximo de 1.
     - name: VALUE_SEGMENT
+      description: Segmento de valor del cliente basado en percentiles de CLV (por ejemplo, bajo, medio o alto).
       tests:
         - accepted_values:
             arguments:
@@ -30,25 +44,38 @@ models:
                 - low
                 - medium
                 - high
+
   - name: mart_inventory_health
+    description: Modelo agregado a nivel semanal por producto que combina inventario y ventas para medir 
+      disponibilidad de stock, semanas de cobertura (weeks of stock), riesgo de rotura (stockout) y tendencia 
+      reciente de ventas.
     columns:
     - name: ITEM_SK
+      description: Identificador único del producto.
       tests:
         - not_null
     - name: WEEK_SEQ
+      description: Número secuencial de la semana dentro del calendario.
       tests:
         - not_null
     - name: YEAR
+      description: Año correspondiente a la semana analizada.
     - name: AVG_STOCK
+      description: Promedio de unidades disponibles en inventario durante la semana.
     - name: WEEKLY_SALES
+      description: Total de unidades vendidas durante la semana.
     - name: WEEKS_OF_STOCK
-
+      description: Número de semanas que el inventario promedio podría cubrir según el ritmo de ventas semanal.
     - name: STOCKOUT_FLAG
+      description: Indicador de rotura de stock; valor 1 si no hubo inventario disponible en la semana, 
+        0 en caso contrario.
       tests:
           - dbt_expectations.expect_column_values_to_be_in_set:
               arguments:
                 value_set: [0, 1]
     - name: TREND
+      description: Clasificación de la tendencia de ventas del producto basada en el promedio móvil reciente 
+        frente a la semana previa (growing, declining o stable).
       tests:
         - accepted_values:
             arguments:
@@ -57,10 +84,16 @@ models:
                 - declining
                 - stable
   - name: mart_sales_by_channel
+    description: Modelo agregado a nivel mensual que combina ventas y devoluciones por canal, 
+      categoría de producto y punto de venta, proporcionando métricas de ingresos, ingresos netos, 
+      tasa de devoluciones y nivel de descuento, con soporte para cargas incrementales.
     columns:
     - name: YEAR
+      description: Año correspondiente al periodo de análisis.
     - name: MONTH
+      description: Mes del año (número) correspondiente al periodo de análisis.
     - name: SALES_CHANNEL
+      description: Canal de venta a través del cual se realizó la transacción (tienda, web o catálogo).
       tests:
         - not_null
         - accepted_values:
@@ -70,17 +103,25 @@ models:
                 - web
                 - catalog
     - name: CATEGORY
+      description: Categoría del producto vendido.
       tests:
         - not_null
     - name: STORE_SK
+      description: Identificador de la tienda física asociada a la venta, si aplica.
     - name: WEB_SITE_SK
+      description: Identificador del sitio web asociado a la venta, si aplica.
     - name: REVENUE
+      description: Ingresos brutos totales generados por las ventas antes de devoluciones.
       tests:
         - not_null
     - name: NET_REVENUE
+      description: Ingresos netos después de descontar devoluciones.
     - name: RETURN_RATE
+      description: Proporción de devoluciones sobre los ingresos brutos del periodo.
     - name: AVG_DISCOUNT_PCT
+      description: Porcentaje promedio de descuento aplicado sobre el precio de venta.
     - name: MART_KEY
+      description: Clave sustituta única generada a partir de la combinación de dimensiones del modelo.
       tests:
         - not_null
         - unique
