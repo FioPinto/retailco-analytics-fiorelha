@@ -38,7 +38,10 @@ final as (
         s.store_tx,
         s.web_tx,
         s.catalog_tx,
-        (COALESCE(r.total_returns,0) / NULLIF(s.lifetime_revenue,0)) as return_rate
+        LEAST(
+            COALESCE(r.total_returns,0) / NULLIF(s.lifetime_revenue,0),
+            1
+        ) AS return_rate
     FROM customer_sales s
     LEFT JOIN customer_returns r
         ON s.customer_sk = r.customer_sk

@@ -1,0 +1,71 @@
+models:
+  - name: mart_customer_lifetime_value
+    columns:
+    - name: CUSTOMER_SK
+      tests:
+          - unique
+    - name: TOTAL_TRANSACTIONS
+    - name: LIFETIME_REVENUE
+    - name: TOTAL_RETURNS
+    - name: CLV
+    - name: STORE_TX
+    - name: WEB_TX
+    - name: CATALOG_TX
+    - name: RETURN_RATE
+    - name: VALUE_SEGMENT
+      tests:
+        - accepted_values:
+            arguments:
+              values:
+                - low
+                - medium
+                - high
+  - name: mart_inventory_health
+    columns:
+    - name: ITEM_SK
+      tests:
+        - not_null
+    - name: WEEK_SEQ
+      tests:
+        - not_null
+    - name: YEAR
+    - name: AVG_STOCK
+    - name: WEEKLY_SALES
+    - name: WEEKS_OF_STOCK
+    - name: STOCKOUT_FLAG
+    - name: TREND
+      tests:
+        - accepted_values:
+            arguments:
+              values:
+                - growing
+                - declining
+                - stable
+  - name: mart_sales_by_channel
+    columns:
+    - name: YEAR
+    - name: MONTH
+    - name: SALES_CHANNEL
+      tests:
+        - not_null
+        - accepted_values:
+            arguments:
+              values: 
+                - store
+                - web
+                - catalog
+    - name: CATEGORY
+      tests:
+        - not_null
+    - name: STORE_SK
+    - name: WEB_SITE_SK
+    - name: REVENUE
+      tests:
+        - not_null
+    - name: NET_REVENUE
+    - name: RETURN_RATE
+    - name: AVG_DISCOUNT_PCT
+    - name: MART_KEY
+      tests:
+        - not_null
+        - unique
