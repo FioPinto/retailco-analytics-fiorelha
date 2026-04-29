@@ -16,6 +16,8 @@ WITH catalog_sales as (
         quantity,
         net_paid,
         net_profit,
+        sales_price,
+        list_price,
         ext_discount_amt as discount_amount,
         EXT_TAX AS tax
     FROM {{ ref('stg_raw__catalog_sales') }}
@@ -35,6 +37,8 @@ store_sales as (
         quantity,
         net_paid,
         net_profit,
+        sales_price,
+        list_price,
         ext_discount_amt as discount_amount,
         EXT_TAX AS tax
     FROM {{ ref('stg_raw__store_sales') }}
@@ -54,6 +58,8 @@ web_sales as (
         quantity,
         net_paid,
         net_profit,
+        sales_price,
+        list_price,
         ext_discount_amt as discount_amount,
         EXT_TAX AS tax
     from {{ ref('stg_raw__web_sales') }}
