@@ -25,12 +25,12 @@ final as (
         sum(coalesce(ur.return_amount,0)) / nullif(sum(us.net_paid),0) as return_rate,
         sum(coalesce(us.discount_amount,0)) / nullif(sum(us.sales_price),0) as avg_discount_pct,
         {{ dbt_utils.generate_surrogate_key([
-            'year',
-            'month',
-            'sales_channel',
-            'category',
-            'store_sk',
-            'web_site_sk'
+            'dd.year',
+            'dd.moy',
+            'us.sales_channel',
+            'i.category',
+            'us.store_sk',
+            'us.web_site_sk'
         ]) }} as mart_key
     from unified_sales us
 
@@ -44,7 +44,7 @@ final as (
     left join {{ ref('stg_raw__date_dim') }} dd
         on us.date_sk = dd.date_sk
 
-    group by 1,2,3,4,5,6,7
+    group by 1,2,3,4,5,6
 )
 
 select * from final
